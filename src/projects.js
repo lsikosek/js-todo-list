@@ -33,4 +33,28 @@ class Project {
     }
 }
 
-export {Todo, Project};
+const defaultProject = new Project("Default", "This is the default project.");
+
+let projects = [defaultProject];
+
+let selectedProject=defaultProject;
+
+function setSelectedProject(projectTitle) {
+    let projectFound = projects.find((proj)=>proj.title===projectTitle);
+    if (!projectFound) {
+        throw Error("Project with title " + projectTitle + " doesn't exist.");
+    }
+    else selectedProject=projectFound;
+}
+
+function addProject(title, desc) {
+    projects.push(new Project(title,desc));
+    setSelectedProject(title);
+}
+
+function addTodo(title, desc, dueDate, priority, notes) {
+    let newTodo = new Todo(title, desc, dueDate, priority, notes);
+    selectedProject.addTodo(newTodo);
+}
+
+export {Todo, Project, projects, selectedProject, setSelectedProject, addProject, addTodo};

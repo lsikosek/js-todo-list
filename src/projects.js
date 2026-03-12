@@ -1,6 +1,8 @@
+import { addProjectOption } from "./projectSelector";
+
 class Todo {
 
-    complete=false;
+    completed=false;
 
     constructor(title, desc, dueDate, priority, notes) {
         this.title=title;
@@ -49,6 +51,7 @@ function setSelectedProject(projectTitle) {
 
 function addProject(title, desc) {
     projects.push(new Project(title,desc));
+    addProjectOption(title);
     setSelectedProject(title);
 }
 

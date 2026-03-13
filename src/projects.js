@@ -1,4 +1,5 @@
-import { addProjectOption } from "./projectSelector";
+import { addProjectOption } from "./projectSelector.js";
+import displayProject from "./sidebar.js";
 
 class Todo {
 
@@ -37,16 +38,21 @@ class Project {
 
 const defaultProject = new Project("Default", "This is the default project.");
 
-let projects = [defaultProject];
+let projects = [];
 
 let selectedProject=defaultProject;
+
+
 
 function setSelectedProject(projectTitle) {
     let projectFound = projects.find((proj)=>proj.title===projectTitle);
     if (!projectFound) {
         throw Error("Project with title " + projectTitle + " doesn't exist.");
     }
-    else selectedProject=projectFound;
+    else {
+        displayProject(projectFound);
+        selectedProject=projectFound;
+    }
 }
 
 function addProject(title, desc) {
@@ -59,5 +65,7 @@ function addTodo(title, desc, dueDate, priority, notes) {
     let newTodo = new Todo(title, desc, dueDate, priority, notes);
     selectedProject.addTodo(newTodo);
 }
+
+addProject(defaultProject.title, defaultProject.desc);
 
 export {Todo, Project, projects, selectedProject, setSelectedProject, addProject, addTodo};

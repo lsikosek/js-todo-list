@@ -65,7 +65,16 @@ header .project-controls select {
 
 #sidebar {
     background-color: rgb(202, 228, 239);
-    
+    padding: 3rem;
+}
+
+.project-name {
+    font-size: 3rem;
+}
+
+.project-desc {
+    margin-top: 16px;
+    font-size: 2rem;
 }
 
 #content {

@@ -4,6 +4,7 @@ import displayProject from "./sidebar.js";
 class Todo {
 
     completed=false;
+    id=crypto.randomUUID();
 
     constructor(title, desc, dueDate, priority, notes) {
         this.title=title;

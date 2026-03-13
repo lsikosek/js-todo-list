@@ -1,5 +1,5 @@
-import { newTodoButton } from "./content.js";
-import { addProject, setSelectedProject } from "./projects.js";
+import { addTodoElement, newTodoButton } from "./content.js";
+import { addProject, setSelectedProject, Todo } from "./projects.js";
 import { projectSelect } from "./projectSelector.js";
 
 
@@ -40,6 +40,18 @@ newTodoButton.addEventListener("click", (e)=>{
 newTodoForm.addEventListener("submit",(e)=>{
     const formData = new FormData(newTodoForm);
 
+    const title = formData.get("todo_name");
+    const desc = formData.get("todo_description");
+    const dueDate = formData.get("todo_duedate");
+    const priority = formData.get("todo_priority");
+    const notes = formData.get("todo_notes");
+
+    const todo = new Todo(title,desc,dueDate,priority,notes);
+
+    newTodoForm.reset();
+
+    addTodoElement(todo);
+
 });
 
 // Make priority range display the number
@@ -48,3 +60,5 @@ newTodoPriorityRangeCounter.textContent=newTodoPriorityRange.value;
 newTodoPriorityRange.addEventListener("input", ()=>{
     newTodoPriorityRangeCounter.textContent=newTodoPriorityRange.value;
 });
+
+

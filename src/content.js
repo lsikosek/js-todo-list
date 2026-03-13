@@ -13,3 +13,5 @@ function createTodoElement(todo) {
 
 
 contentDiv.appendChild(newTodoButton);
+
+export {newTodoButton};

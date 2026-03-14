@@ -23,6 +23,7 @@ function createTodoElement(todoObj) {
     todoDoneText.textContent="Done";
     const todoDoneCheckbox = document.createElement("input");
     todoDoneCheckbox.type="checkbox";
+    todoDoneCheckbox.checked=todoObj.completed;
 
     todoDoneDiv.appendChild(todoDoneText);
     todoDoneDiv.appendChild(todoDoneCheckbox);
@@ -40,6 +41,22 @@ function createTodoElement(todoObj) {
     todoDiv.appendChild(todoDue);
     todoDiv.appendChild(todoDoneDiv);
     todoDiv.appendChild(todoNotes);
+
+
+    // Handle events
+
+    todoDoneCheckbox.addEventListener("change", (e)=>{
+        
+        todoObj.completed=todoDoneCheckbox.checked;
+        console.log("State of obj: ", todoObj.completed);
+        console.log("State of checkbox: ", todoDoneCheckbox.checked);
+    });
+
+    todoNotes.addEventListener("focusout",(e)=>{
+        todoObj.notes=todoNotes.value;
+        console.log("State of obj: ", todoObj.notes);
+        console.log("State of notes: ", todoNotes.value);
+    });
 
     return todoDiv;
 }

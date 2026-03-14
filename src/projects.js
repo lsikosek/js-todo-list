@@ -1,3 +1,4 @@
+import { addTodoElement, selectProject } from "./content.js";
 import { addProjectOption } from "./projectSelector.js";
 import displayProject from "./sidebar.js";
 
@@ -29,11 +30,11 @@ class Project {
     }
 
     addTodo = function(todo) {
-        todoList.push(todo);
+        this.#todoList.push(todo);
     }
 
     getTodos = function() {
-        return todoList;
+        return this.#todoList;
     }
 }
 
@@ -52,6 +53,7 @@ function setSelectedProject(projectTitle) {
     }
     else {
         displayProject(projectFound);
+        selectProject(projectFound);
         selectedProject=projectFound;
     }
 }
@@ -65,6 +67,7 @@ function addProject(title, desc) {
 function addTodo(title, desc, dueDate, priority, notes) {
     let newTodo = new Todo(title, desc, dueDate, priority, notes);
     selectedProject.addTodo(newTodo);
+    addTodoElement(newTodo);
 }
 
 addProject(defaultProject.title, defaultProject.desc);

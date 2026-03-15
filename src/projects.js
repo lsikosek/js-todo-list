@@ -22,7 +22,7 @@ class Todo {
 
 class Project {
 
-    #todoList=[];
+    todoList=[];
 
     constructor(title, desc) {
         this.title=title;
@@ -30,11 +30,12 @@ class Project {
     }
 
     addTodo = function(todo) {
-        this.#todoList.push(todo);
+        this.todoList.push(todo);
+        console.log(this.title+" Todo list: "+this.todoList);
     }
 
     getTodos = function() {
-        return this.#todoList;
+        return this.todoList;
     }
 }
 
@@ -55,6 +56,8 @@ function setSelectedProject(projectTitle) {
         displayProject(projectFound);
         selectProject(projectFound);
         selectedProject=projectFound;
+
+        console.log(projectFound);
     }
 }
 
@@ -64,9 +67,13 @@ function addProject(title, desc) {
     setSelectedProject(title);
 }
 
+
 function addTodo(title, desc, dueDate, priority, notes) {
     let newTodo = new Todo(title, desc, dueDate, priority, notes);
     selectedProject.addTodo(newTodo);
+
+    console.log("Added to: "+ selectedProject.title);
+
     addTodoElement(newTodo);
 }
 

@@ -23,30 +23,35 @@
     <dialog class="new-proj-dia">
         <h1>New project</h1>
         <form method="dialog">
-            <input type="text" name="project_name" id="project-name-input">
-            <textarea name="project_description" id="project-description-text"></textarea>
+            <div class="form-field">
+                <label for="project-name-input">Project title:</label>
+                <input type="text" name="project_name" id="project-name-input"></div>
+            <div class="form-field">
+                <label for="project-description-text">Description:</label>
+                <textarea name="project_description" id="project-description-text"></textarea></div>
             <button>Create</button>
         </form>
     </dialog>
     <dialog class="new-todo-dia">
-        <h1>New project</h1>
+        <h1>New TODO</h1>
         <form method="dialog">
             <div class="form-field">
-                
+                <label for="todo-name-input">Title:</label>
                 <input type="text" name="todo_name" id="todo-name-input"></div>
             <div class="form-field">
-                
-                <textarea name="todo_description" id="project-description-text"></textarea></div>
+                <label for="todo-description-text">Description:</label>
+                <textarea name="todo_description" id="todo-description-text"></textarea></div>
             <div class="form-field">
-                
+                <label for="todo-duedate">Due:</label>
                 <input type="datetime" name="todo_duedate" id="todo-duedate"></div>
             <div class="form-field">
-                
+                <label for="todo-priority">Priority:</label>
                 <input type="range" min="1" max="10" name="todo_priority" id="todo-priority">
                 <span id="todo-priority-counter"></span>
             </div>
 
             <div class="form-field">
+                <label for="todo-notes">Notes:</label>
                 <textarea name="todo_notes" id="todo-notes"></textarea>
             </div>
                 

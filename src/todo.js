@@ -7,6 +7,14 @@ function createTodoElement(todoObj) {
     const todoH1 = document.createElement("h1");
     todoH1.textContent=todoObj.title;
 
+    const todoDelBtn = document.createElement("button");
+    todoDelBtn.classList.add("todo-del-btn");
+    const todoHeader = document.createElement("div");
+    todoHeader.classList.add("todo-header");
+
+    todoHeader.appendChild(todoH1);
+    todoHeader.appendChild(todoDelBtn);
+
     const todoDesc = document.createElement("p");
     todoDesc.textContent="Description: " + todoObj.desc;
 
@@ -36,7 +44,7 @@ function createTodoElement(todoObj) {
     todoNotes.textContent=todoObj.notes;
 
 
-    todoDiv.appendChild(todoH1);
+    todoDiv.appendChild(todoHeader);
     todoDiv.appendChild(todoDesc);
     todoDiv.appendChild(todoDue);
     todoDiv.appendChild(todoDoneDiv);
@@ -56,6 +64,10 @@ function createTodoElement(todoObj) {
         todoObj.notes=todoNotes.value;
         console.log("State of obj: ", todoObj.notes);
         console.log("State of notes: ", todoNotes.value);
+    });
+
+    todoDelBtn.addEventListener("click",()=>{
+        console.log("delete this todo");
     });
 
     return todoDiv;

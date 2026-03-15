@@ -195,6 +195,36 @@ dialog textarea:focus {
     color: black;
 }
 
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.todo-del-btn {
+    width: 4rem;
+    height: 4rem;
+    background-color: rgb(255, 94, 94);
+    border: none;
+    border-radius: 50%;
+
+    color: red;
+
+    opacity: 0.6;
+}
+
+.todo-del-btn:hover {
+    opacity: 1;
+
+    cursor: pointer;
+}
+
+.todo-del-btn::after {
+    content: "X";
+
+    font-weight: 700;
+}
+
 .done-div {
     display: flex;
     align-items: center;

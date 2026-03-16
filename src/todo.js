@@ -1,3 +1,5 @@
+import { removeTodo } from "./projects.js";
+
 function createTodoElement(todoObj) {
     const todoDiv = document.createElement("div");
     todoDiv.classList.add("todo-div");
@@ -47,6 +49,7 @@ function createTodoElement(todoObj) {
     todoDiv.appendChild(todoHeader);
     todoDiv.appendChild(todoDesc);
     todoDiv.appendChild(todoDue);
+    todoDiv.appendChild(todoPriority);
     todoDiv.appendChild(todoDoneDiv);
     todoDiv.appendChild(todoNotes);
 
@@ -67,7 +70,7 @@ function createTodoElement(todoObj) {
     });
 
     todoDelBtn.addEventListener("click",()=>{
-        console.log("delete this todo");
+        removeTodo(todoObj);
     });
 
     return todoDiv;

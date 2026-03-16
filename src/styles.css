@@ -206,8 +206,8 @@ dialog textarea:focus {
 }
 
 .todo-del-btn {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     background-color: rgb(255, 94, 94);
     border: none;
     border-radius: 50%;
@@ -216,6 +216,12 @@ dialog textarea:focus {
     color: red;
 
     opacity: 0.6;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .todo-del-btn:hover {

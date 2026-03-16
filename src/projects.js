@@ -19,6 +19,10 @@ class Todo {
     updateNotes = function(newNotes) {
         this.notes=newNotes;
     }
+
+    // delete = function() {
+    //     this
+    // }
 }
 
 class Project {
@@ -39,6 +43,18 @@ class Project {
 
     getTodos = function() {
         return this.todoList;
+    }
+
+    removeTodo = function(todo) {
+        const todoFoundIndex = this.todoList.findIndex((el)=>el.id=todo.id);
+
+        if (todoFoundIndex<0) {
+            throw Error("Cannot remove todo "+todo.title+": not found in "+this.title+" project.");
+        }
+        else {
+            this.todoList.splice(todoFoundIndex,1);
+            updateStorage();
+        }
     }
 }
 
@@ -82,6 +98,11 @@ function addTodo(title, desc, dueDate, priority, notes) {
     addTodoElement(newTodo);
 }
 
+function removeTodo(todo) {
+    selectedProject.removeTodo(todo);
+    selectProject(selectedProject);
+}
+
 function setProjects(projectArray) {
     projects=projectArray;
     projects.map((proj)=>proj.title).forEach((projTitle)=>addProjectOption(projTitle));
@@ -96,4 +117,4 @@ function initializeProjects() {
 
 loadStorage();
 
-export {Todo, Project, projects, selectedProject, setSelectedProject, addProject, addTodo, setProjects, initializeProjects};
+export {Todo, Project, projects, selectedProject, setSelectedProject, addProject, addTodo, setProjects, initializeProjects, removeTodo};

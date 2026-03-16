@@ -1,6 +1,7 @@
 import { addTodoElement, selectProject } from "./content.js";
 import { addProjectOption } from "./projectSelector.js";
 import displayProject from "./sidebar.js";
+import { loadStorage, updateStorage } from "./storage.js";
 
 class Todo {
 
@@ -32,6 +33,8 @@ class Project {
     addTodo = function(todo) {
         this.todoList.push(todo);
         console.log(this.title+" Todo list: "+this.todoList);
+
+        updateStorage();
     }
 
     getTodos = function() {
@@ -65,6 +68,8 @@ function addProject(title, desc) {
     projects.push(new Project(title,desc));
     addProjectOption(title);
     setSelectedProject(title);
+
+    updateStorage();
 }
 
 
@@ -77,6 +82,18 @@ function addTodo(title, desc, dueDate, priority, notes) {
     addTodoElement(newTodo);
 }
 
-addProject(defaultProject.title, defaultProject.desc);
+function setProjects(projectArray) {
+    projects=projectArray;
+    projects.map((proj)=>proj.title).forEach((projTitle)=>addProjectOption(projTitle));
+    setSelectedProject("Default");
+}
 
-export {Todo, Project, projects, selectedProject, setSelectedProject, addProject, addTodo};
+function initializeProjects() {
+    addProject(defaultProject.title, defaultProject.desc); // this is ruinging persistant storage
+    addTodo("todo", "todly do", "01-01-1999", "1", "none");
+}
+
+
+loadStorage();
+
+export {Todo, Project, projects, selectedProject, setSelectedProject, addProject, addTodo, setProjects, initializeProjects};

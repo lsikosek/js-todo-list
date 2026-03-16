@@ -16,19 +16,19 @@ function createTodoElement(todoObj) {
     todoHeader.appendChild(todoDelBtn);
 
     const todoDesc = document.createElement("p");
-    todoDesc.textContent="Description: " + todoObj.desc;
+    todoDesc.innerHTML="<span class=\"field-name\">Description:</span> " + todoObj.desc;
 
     const todoDue = document.createElement("p");
-    todoDue.textContent="Due: " + todoObj.dueDate;
+    todoDue.innerHTML="<span class=\"field-name\">Due:</span>" + todoObj.dueDate;
 
     const todoPriority = document.createElement("p");
-    todoPriority.textContent="Priority: " + todoObj.priority;
+    todoPriority.innerHTML="<span class=\"field-name\">Priority:</span> " + todoObj.priority;
 
     
     const todoDoneDiv = document.createElement("div");
     todoDoneDiv.classList.add("done-div")
     const todoDoneText = document.createElement("span");
-    todoDoneText.textContent="Done";
+    todoDoneText.innerHTML="<span class=\"field-name\">Done:</span>";
     const todoDoneCheckbox = document.createElement("input");
     todoDoneCheckbox.type="checkbox";
     todoDoneCheckbox.checked=todoObj.completed;
